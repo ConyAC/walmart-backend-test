@@ -42,4 +42,21 @@ class TestWalmartBackendApplicationTests {
 		assertNotEquals(0, products.size());
 		assertEquals(16, products.size());
 	}
+	
+	
+	@Test
+	void find_by_term_in_brand_contain() {
+		String specialProduct = "saas";
+		List<Product> products = repository.findByBrandRegexOrDescriptionRegex(specialProduct,specialProduct);
+		assertNotEquals(0, products.size());
+		assertEquals(21, products.size());
+	}
+	
+	@Test
+	void find_by_term_in_description() {
+		String specialProduct = "hh";
+		List<Product> products = repository.findByBrandRegexOrDescriptionRegex(specialProduct,specialProduct);
+		assertNotEquals(0, products.size());
+		assertEquals(65, products.size());
+	}
 }
